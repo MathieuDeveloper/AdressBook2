@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,5 +27,9 @@ namespace AdressBook2.Models
         public byte[] ImageData { get; set; }
         public string ImageType { get; set; }
 
+        public int Id { get; set; }
+
+        [NotMapped]
+        public string FullName {  get { return $"{FirstName} {LastName}"; } }
     }
 }
