@@ -1,4 +1,6 @@
 using AdressBook2.Data;
+using AdressBook2.Services;
+using AdressBook2.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +29,8 @@ namespace AdressBook2
         {
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<IImageService, BasicImageService>();
 
 
             services.AddControllersWithViews();
